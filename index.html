@@ -2,130 +2,37 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจองล็อคตลาดสตาร์ สาขามาบตาพุด</title>
     <style>
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            user-select: none;
-            margin: 0;
-            padding: 0;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Sarabun', sans-serif;
+            font-family: 'Sarabun', sans-serif;
             margin: 0;
-            padding: 15px;
+            padding: 10px;
             background-color: #f5f5f5;
             -webkit-text-size-adjust: 100%;
             overflow-x: hidden;
             touch-action: manipulation;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-y: contain;
         }
         
         h1 {
             text-align: center;
             color: #2c3e50;
-            margin: 15px 0 20px;
+            margin: 15px 0;
             font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .search-container {
-            margin: 0 auto 20px;
-            width: 100%;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .search-input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: 'Sarabun', sans-serif;
-            font-size: 16px;
-            -webkit-appearance: none;
-            appearance: none;
-            min-height: 50px;
-            background-color: white;
-        }
-        
-        .search-btn {
-            background-color: #9b59b6;
-            min-width: 90px;
-            border-radius: 8px;
-            color: white;
-            font-weight: 500;
-        }
-        
-        .controls {
-            text-align: center;
-            margin: 0 auto 25px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-width: 800px;
-        }
-        
-        button {
-            background-color: #2c3e50;
-            color: white;
-            border: none;
-            padding: 14px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            touch-action: manipulation;
-            -webkit-user-select: none;
-            user-select: none;
-            min-height: 50px;
-            -webkit-appearance: none;
-            appearance: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-        
-        button:active {
-            opacity: 0.8;
-        }
-        
-        .view-btn {
-            background-color: #3498db;
-        }
-        
-        .report-btn {
-            background-color: #27ae60;
-        }
-        
-        .export-btn {
-            background-color: #9b59b6;
-        }
-        
-        .price-btn {
-            background-color: #f39c12;
-        }
-        
-        .reset-btn {
-            background-color: #e74c3c;
-            grid-column: span 2;
-        }
-        
-        .print-btn {
-            background-color: #1abc9c;
-            grid-column: span 2;
         }
         
         .zone-container {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            padding: 10px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
@@ -138,24 +45,22 @@
         .zone-title {
             background-color: #2c3e50;
             color: white;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 5px;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align: center;
             position: sticky;
             left: 0;
-            font-weight: 500;
         }
         
         .locks-grid {
             display: grid;
-            gap: 6px;
+            gap: 5px;
             justify-content: center;
             align-items: start;
             width: max-content;
             min-width: 100%;
-            -webkit-overflow-scrolling: touch;
         }
         
         .lock {
@@ -166,15 +71,14 @@
             justify-content: center;
             font-weight: bold;
             cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-            min-width: 55px;
-            min-height: 55px;
-            padding: 5px;
+            border-radius: 3px;
+            transition: all 0.1s;
+            font-size: 0.8rem;
+            min-width: 45px;
+            min-height: 45px;
+            padding: 3px;
             text-align: center;
             touch-action: manipulation;
-            -webkit-user-select: none;
             user-select: none;
         }
         
@@ -185,28 +89,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 20px;
+            min-width: 15px;
             height: 100%;
             font-size: 0.7rem;
         }
         
         .lock-id {
-            font-size: 0.8rem;
-            margin-bottom: 3px;
-            font-weight: 600;
+            font-size: 0.7rem;
+            margin-bottom: 2px;
         }
         
         .lock-name {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             word-break: break-word;
             max-width: 100%;
-            line-height: 1.2;
+            line-height: 1.1;
         }
         
         .lock-price {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: #666;
-            margin-top: 3px;
+            margin-top: 2px;
         }
         
         .booked .lock-price {
@@ -242,6 +145,78 @@
             color: white;
         }
         
+        .lock:active:not(.booked):not(.walkway) {
+            transform: scale(0.95);
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 15px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+            touch-action: manipulation;
+            user-select: none;
+            transition: transform 0.1s;
+        }
+        
+        button:active {
+            transform: scale(0.97);
+        }
+        
+        .view-btn {
+            background-color: #3498db;
+        }
+        
+        .report-btn {
+            background-color: #27ae60;
+        }
+        
+        .export-btn {
+            background-color: #9b59b6;
+        }
+        
+        .price-btn {
+            background-color: #f39c12;
+        }
+        
+        .reset-btn {
+            background-color: #e74c3c;
+            grid-column: span 2;
+        }
+        
+        .search-container {
+            margin: 15px auto;
+            width: 100%;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .search-btn {
+            background-color: #9b59b6;
+            min-width: 80px;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -250,238 +225,235 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
+            z-index: 100;
             justify-content: center;
             align-items: flex-start;
-            padding: 20px 15px;
+            padding: 20px 10px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain;
         }
         
         .modal-content {
             background-color: white;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 8px;
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             margin: 20px 0;
-            touch-action: pan-y;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
         
         .modal-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
             color: #2c3e50;
-            font-weight: 600;
-            text-align: center;
         }
         
         .modal-input {
             width: 100%;
-            padding: 14px;
-            margin-bottom: 20px;
+            padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 4px;
             font-family: 'Sarabun', sans-serif;
-            font-size: 16px;
-            -webkit-appearance: none;
-            appearance: none;
-            min-height: 50px;
+            font-size: 1rem;
         }
         
         .modal-actions {
             display: flex;
             justify-content: flex-end;
-            gap: 12px;
-        }
-        
-        .modal-actions button {
-            min-height: 50px;
-            padding: 14px 20px;
-            font-size: 16px;
+            gap: 10px;
         }
         
         .report-container {
-            max-height: 70vh;
+            max-height: calc(80vh - 100px);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
         
         .report-zone {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .report-zone-title {
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-weight: bold;
+            margin-bottom: 8px;
             color: #2c3e50;
-            font-size: 1rem;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
         }
         
         .report-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.9rem;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
         }
         
         .report-summary {
             background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
             border: 1px solid #eee;
         }
         
         .report-summary-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 5px;
         }
         
         .report-summary-total {
-            font-weight: 600;
-            border-top: 1px solid #ddd;
-            padding-top: 8px;
-            margin-top: 8px;
-            font-size: 1rem;
-        }
-        
-        .map-container {
-            display: grid;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .map-zone {
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .map-zone-title {
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 12px;
-            font-size: 1rem;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .map-locks-grid {
-            display: grid;
-            gap: 4px;
-            justify-content: center;
-            align-items: start;
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .map-lock {
-            border: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             font-weight: bold;
+            border-top: 1px solid #ddd;
+            padding-top: 5px;
+            margin-top: 5px;
+        }
+        
+        /* สไตล์สำหรับระบบจัดการราคา */
+        .price-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .price-tab {
+            padding: 8px 15px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            color: #2c3e50;
+            white-space: nowrap;
+        }
+        
+        .price-tab.active {
+            border-bottom-color: #3498db;
+            font-weight: bold;
+        }
+        
+        .price-zone-content {
+            display: none;
+        }
+        
+        .price-zone-content.active {
+            display: block;
+        }
+        
+        .price-setting {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .price-setting label {
+            font-weight: bold;
+            min-width: 100px;
+        }
+        
+        .price-input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 0.7rem;
-            min-width: 40px;
-            min-height: 40px;
-            padding: 3px;
-            text-align: center;
         }
         
-        .map-lock-id {
-            font-size: 0.6rem;
-            margin-bottom: 2px;
-            font-weight: 600;
+        .price-custom-list {
+            margin-top: 20px;
         }
         
-        .map-lock-name {
-            font-size: 0.6rem;
-            word-break: break-word;
-            max-width: 100%;
-            line-height: 1.1;
+        .custom-price-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
-        @media print {
-            body * {
-                visibility: hidden;
+        .custom-price-item input[type="text"] {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .custom-price-item input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .remove-custom-price {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .add-custom-price {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 600px) {
+            .controls {
+                grid-template-columns: repeat(3, 1fr);
             }
-            #map-modal, #map-modal * {
-                visibility: visible;
+            
+            .reset-btn {
+                grid-column: span 1;
             }
-            #map-modal {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: auto;
-                background-color: white;
-                padding: 0;
-                margin: 0;
-            }
-            .modal-actions {
-                display: none !important;
-            }
-            .map-lock {
-                min-width: 35px;
-                min-height: 35px;
+            
+            .lock {
+                min-width: 55px;
+                min-height: 55px;
             }
         }
         
         @media (min-width: 768px) {
             body {
-                padding: 25px;
+                padding: 20px;
                 max-width: 1200px;
                 margin: 0 auto;
             }
             
             .controls {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(6, 1fr);
+                gap: 15px;
             }
             
-            .reset-btn, .print-btn {
-                grid-column: span 1;
-            }
-            
-            .lock {
-                min-width: 65px;
-                min-height: 65px;
+            button {
+                padding: 10px;
                 font-size: 1rem;
             }
             
-            .lock-id {
+            .lock {
+                min-width: 60px;
+                min-height: 60px;
                 font-size: 0.9rem;
             }
             
+            .lock-id {
+                font-size: 0.8rem;
+            }
+            
             .lock-name {
-                font-size: 0.8rem;
-            }
-            
-            .map-lock {
-                min-width: 45px;
-                min-height: 45px;
-                font-size: 0.8rem;
-            }
-            
-            .map-lock-id {
                 font-size: 0.7rem;
             }
             
-            .map-lock-name {
-                font-size: 0.7rem;
+            .modal-content {
+                max-width: 600px;
             }
         }
     </style>
@@ -500,37 +472,36 @@
         <button class="report-btn" id="show-report">รายงาน</button>
         <button class="export-btn" id="export-csv">ส่งออก CSV</button>
         <button class="price-btn" id="manage-prices">จัดการราคา</button>
-        <button class="print-btn" id="print-map">พิมพ์ผังรวม</button>
         <button class="reset-btn" id="reset-btn">รีเซ็ตทั้งหมด</button>
     </div>
     
     <!-- Zone A (5x9) -->
     <div class="zone-container">
-        <div class="zone-title">โซน A (45 ล็อก)</div>
+        <div class="zone-title">โซน A (45 ล็อก) - ราคา 300-400 บาท</div>
         <div class="locks-grid" id="zone-a"></div>
     </div>
     
     <!-- Zone A2 (5x9) -->
     <div class="zone-container">
-        <div class="zone-title">โซน A2 (45 ล็อก)</div>
+        <div class="zone-title">โซน A2 (45 ล็อก) - ราคา 250 บาท</div>
         <div class="locks-grid" id="zone-a2"></div>
     </div>
     
     <!-- Zone B (7x8) -->
     <div class="zone-container">
-        <div class="zone-title">โซน B (54 ล็อก)</div>
+        <div class="zone-title">โซน B (54 ล็อก) - ราคา 200-250 บาท</div>
         <div class="locks-grid" id="zone-b"></div>
     </div>
     
     <!-- Zone B2 (8x8) -->
     <div class="zone-container">
-        <div class="zone-title">โซน B2 (48 ล็อก)</div>
+        <div class="zone-title">โซน B2 (48 ล็อก) - ราคา 180 บาท</div>
         <div class="locks-grid" id="zone-b2"></div>
     </div>
     
     <!-- Zone C (11x12) -->
     <div class="zone-container">
-        <div class="zone-title">โซน C (115 ล็อก)</div>
+        <div class="zone-title">โซน C (115 ล็อก) - ราคา 150-200 บาท</div>
         <div class="locks-grid" id="zone-c"></div>
     </div>
 
@@ -557,14 +528,87 @@
         </div>
     </div>
 
-    <!-- Modal สำหรับผังรวม -->
-    <div class="modal" id="map-modal">
-        <div class="modal-content" style="max-width: 90%;">
-            <div class="modal-title">ผังรวมการจองล็อคตลาด</div>
-            <div class="map-container" id="map-content"></div>
+    <!-- Modal สำหรับจัดการราคา -->
+    <div class="modal" id="price-modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-title">จัดการราคาล็อคตลาด</div>
+            
+            <div class="price-tabs">
+                <button class="price-tab active" data-zone="a">โซน A</button>
+                <button class="price-tab" data-zone="a2">โซน A2</button>
+                <button class="price-tab" data-zone="b">โซน B</button>
+                <button class="price-tab" data-zone="b2">โซน B2</button>
+                <button class="price-tab" data-zone="c">โซน C</button>
+            </div>
+            
+            <div class="price-zone-content active" id="price-zone-a">
+                <div class="price-setting">
+                    <label>ราคาพื้นฐาน:</label>
+                    <input type="number" class="price-input base-price" data-zone="a" value="300" min="0">
+                    <span>บาท</span>
+                </div>
+                <div class="price-custom-list">
+                    <h3>ราคาเฉพาะล็อค</h3>
+                    <div id="custom-prices-a"></div>
+                    <button class="add-custom-price" data-zone="a">+ เพิ่มราคาเฉพาะล็อค</button>
+                </div>
+            </div>
+            
+            <div class="price-zone-content" id="price-zone-a2">
+                <div class="price-setting">
+                    <label>ราคาพื้นฐาน:</label>
+                    <input type="number" class="price-input base-price" data-zone="a2" value="250" min="0">
+                    <span>บาท</span>
+                </div>
+                <div class="price-custom-list">
+                    <h3>ราคาเฉพาะล็อค</h3>
+                    <div id="custom-prices-a2"></div>
+                    <button class="add-custom-price" data-zone="a2">+ เพิ่มราคาเฉพาะล็อค</button>
+                </div>
+            </div>
+            
+            <div class="price-zone-content" id="price-zone-b">
+                <div class="price-setting">
+                    <label>ราคาพื้นฐาน:</label>
+                    <input type="number" class="price-input base-price" data-zone="b" value="200" min="0">
+                    <span>บาท</span>
+                </div>
+                <div class="price-custom-list">
+                    <h3>ราคาเฉพาะล็อค</h3>
+                    <div id="custom-prices-b"></div>
+                    <button class="add-custom-price" data-zone="b">+ เพิ่มราคาเฉพาะล็อค</button>
+                </div>
+            </div>
+            
+            <div class="price-zone-content" id="price-zone-b2">
+                <div class="price-setting">
+                    <label>ราคาพื้นฐาน:</label>
+                    <input type="number" class="price-input base-price" data-zone="b2" value="180" min="0">
+                    <span>บาท</span>
+                </div>
+                <div class="price-custom-list">
+                    <h3>ราคาเฉพาะล็อค</h3>
+                    <div id="custom-prices-b2"></div>
+                    <button class="add-custom-price" data-zone="b2">+ เพิ่มราคาเฉพาะล็อค</button>
+                </div>
+            </div>
+            
+            <div class="price-zone-content" id="price-zone-c">
+                <div class="price-setting">
+                    <label>ราคาพื้นฐาน:</label>
+                    <input type="number" class="price-input base-price" data-zone="c" value="150" min="0">
+                    <span>บาท</span>
+                </div>
+                <div class="price-custom-list">
+                    <h3>ราคาเฉพาะล็อค</h3>
+                    <div id="custom-prices-c"></div>
+                    <button class="add-custom-price" data-zone="c">+ เพิ่มราคาเฉพาะล็อค</button>
+                </div>
+            </div>
+            
             <div class="modal-actions">
-                <button id="print-map-btn">พิมพ์ผัง</button>
-                <button id="close-map">ปิด</button>
+                <button id="cancel-price">ยกเลิก</button>
+                <button id="save-prices">บันทึกการเปลี่ยนแปลง</button>
             </div>
         </div>
     </div>
@@ -666,10 +710,12 @@
 
         // ดึงราคาล็อค
         function getLockPrice(lockId) {
+            // โหลดข้อมูลราคาจาก LocalStorage
             const savedPrices = localStorage.getItem('marketPrices');
             if (savedPrices) {
                 const priceData = JSON.parse(savedPrices);
                 
+                // หาโซนที่ตรงกับ lockId
                 const zonePrefix = lockId.substring(0, lockId.indexOf('-') > -1 ? lockId.indexOf('-') : 1);
                 for (const zone in priceData) {
                     if ((zone === 'a' && zonePrefix === 'A') || 
@@ -678,6 +724,7 @@
                         (zone === 'b2' && zonePrefix === 'B2') ||
                         (zone === 'c' && zonePrefix === 'C')) {
                         
+                        // ตรวจสอบราคาเฉพาะล็อค
                         if (priceData[zone].priceMap && priceData[zone].priceMap[lockId]) {
                             return priceData[zone].priceMap[lockId];
                         }
@@ -686,6 +733,7 @@
                 }
             }
             
+            // ถ้าไม่มีข้อมูลใน LocalStorage ให้ใช้ค่าเดิมจาก zones
             const zonePrefix = lockId.substring(0, lockId.indexOf('-') > -1 ? lockId.indexOf('-') : 1);
             const zoneId = Object.keys(zones).find(z => zones[z].prefix === zonePrefix || 
                                   (zonePrefix === 'B2' && zones[z].prefix === 'B'));
@@ -750,6 +798,7 @@
                     
                     lock.appendChild(lockNameElement);
                     
+                    // เพิ่มราคาล็อค
                     const priceElement = document.createElement('div');
                     priceElement.className = 'lock-price';
                     priceElement.textContent = getLockPrice(lockId) + ' บาท';
@@ -779,6 +828,7 @@
                 for (let pair = 1; pair <= zoneInfo.pairsPerRow; pair++) {
                     const letters = zoneInfo.letters || ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
                     
+                    // ล็อคแรกในคู่
                     const lockId1 = `${zoneInfo.prefix}${row}${letters[letterIndex]}`;
                     
                     if (!zoneInfo.excludeLocks || !zoneInfo.excludeLocks.includes(lockId1)) {
@@ -803,6 +853,7 @@
                         }
                         lock1.appendChild(lockNameElement1);
                         
+                        // เพิ่มราคาล็อค
                         const priceElement1 = document.createElement('div');
                         priceElement1.className = 'lock-price';
                         priceElement1.textContent = getLockPrice(lockId1) + ' บาท';
@@ -814,6 +865,7 @@
                     }
                     letterIndex++;
                     
+                    // ล็อคที่สองในคู่
                     const lockId2 = `${zoneInfo.prefix}${row}${letters[letterIndex]}`;
                     
                     if (!zoneInfo.excludeLocks || !zoneInfo.excludeLocks.includes(lockId2)) {
@@ -838,6 +890,7 @@
                         }
                         lock2.appendChild(lockNameElement2);
                         
+                        // เพิ่มราคาล็อค
                         const priceElement2 = document.createElement('div');
                         priceElement2.className = 'lock-price';
                         priceElement2.textContent = getLockPrice(lockId2) + ' บาท';
@@ -874,8 +927,6 @@
 
         // ระบบจองล็อค
         function handleLockClick(e) {
-            if (e.type === 'click' && e.clientX === 0 && e.clientY === 0) return;
-            
             if (isScrolling) {
                 isScrolling = false;
                 return;
@@ -884,18 +935,14 @@
             const lock = e.target.closest('.lock');
             if (!lock || lock.classList.contains('walkway')) return;
             
-            if (e.cancelable) {
-                e.preventDefault();
-            }
-            e.stopPropagation();
-            
             const lockId = lock.dataset.id;
             const lockData = loadData();
             
             if (lock.classList.contains('available')) {
                 currentBookingLock = lock;
                 document.getElementById('booker-name').value = '';
-                showModal('booking-modal');
+                document.getElementById('booking-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             } else if (lock.classList.contains('booked')) {
                 if (confirm(`ต้องการยกเลิกการจองล็อค ${lockId} ของ ${lock.querySelector('.lock-name').textContent} ใช่หรือไม่?`)) {
                     lock.classList.remove('booked');
@@ -943,13 +990,15 @@
             };
             saveData(lockData);
             
-            hideModal('booking-modal');
+            document.getElementById('booking-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
             currentBookingLock = null;
         });
 
         // ยกเลิก Modal การจอง
         document.getElementById('cancel-booking').addEventListener('click', function() {
-            hideModal('booking-modal');
+            document.getElementById('booking-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
             currentBookingLock = null;
         });
 
@@ -1176,12 +1225,14 @@
                 reportContent.appendChild(emptyMessage);
             }
             
-            showModal('report-modal');
+            document.getElementById('report-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
 
         // ปิด Modal รายงาน
         document.getElementById('close-report').addEventListener('click', function() {
-            hideModal('report-modal');
+            document.getElementById('report-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
 
         // ระบบส่งออก CSV
@@ -1210,247 +1261,146 @@
             document.body.removeChild(link);
         });
 
-        // ระบบแสดงผังรวม
-        document.getElementById('print-map').addEventListener('click', function() {
-            const mapContent = document.getElementById('map-content');
-            mapContent.innerHTML = '';
-            
-            for (const zoneId in zones) {
-                const zoneDiv = document.createElement('div');
-                zoneDiv.className = 'map-zone';
-                
-                const zoneTitle = document.createElement('div');
-                zoneTitle.className = 'map-zone-title';
-                zoneTitle.textContent = zones[zoneId].name;
-                zoneDiv.appendChild(zoneTitle);
-                
-                const locksGrid = document.createElement('div');
-                locksGrid.className = 'map-locks-grid';
-                
-                if (zones[zoneId].format === 'vertical') {
-                    createMapVerticalZone(locksGrid, zoneId, zones[zoneId]);
-                } else {
-                    createMapHorizontalZone(locksGrid, zoneId, zones[zoneId]);
-                }
-                
-                zoneDiv.appendChild(locksGrid);
-                mapContent.appendChild(zoneDiv);
-            }
-            
-            showModal('map-modal');
-        });
-
-        // สร้างผังโซนแนวตั้งสำหรับผังรวม
-        function createMapVerticalZone(container, zoneId, zoneInfo) {
-            const lockData = loadData();
-            const totalCols = zoneInfo.cols + zoneInfo.walkwayAfterCols.length;
-            
-            container.style.gridTemplateColumns = `repeat(${totalCols}, 1fr)`;
-            container.style.gridTemplateRows = `repeat(${zoneInfo.rows}, 1fr)`;
-            
-            for (let row = 1; row <= zoneInfo.rows; row++) {
-                let gridCol = 1;
-                
-                for (let col = 1; col <= zoneInfo.cols; col++) {
-                    if (zoneInfo.walkwayAfterCols.includes(col)) {
-                        if (row === 1) {
-                            const walkway = document.createElement('div');
-                            walkway.className = 'walkway';
-                            walkway.style.gridColumn = gridCol;
-                            walkway.style.gridRow = `1 / span ${zoneInfo.rows}`;
-                            walkway.textContent = 'ทางเดิน';
-                            container.appendChild(walkway);
-                        }
-                        gridCol++;
-                    }
-                    
-                    const lockId = `${zoneInfo.prefix}${row}${String.fromCharCode(64 + col)}`;
-                    const lock = document.createElement('div');
-                    lock.className = 'map-lock';
-                    lock.dataset.id = lockId;
-                    
-                    if (lockData[lockId]) {
-                        lock.classList.add('booked');
-                    } else {
-                        lock.classList.add('available');
-                        lock.dataset.zone = zoneId.replace('zone-', '');
-                    }
-                    
-                    lock.style.gridColumn = gridCol;
-                    lock.style.gridRow = row;
-                    
-                    const lockIdElement = document.createElement('div');
-                    lockIdElement.className = 'map-lock-id';
-                    lockIdElement.textContent = lockId;
-                    lock.appendChild(lockIdElement);
-                    
-                    if (lockData[lockId]) {
-                        const lockNameElement = document.createElement('div');
-                        lockNameElement.className = 'map-lock-name';
-                        lockNameElement.textContent = lockData[lockId].name;
-                        lock.appendChild(lockNameElement);
-                    }
-                    
-                    container.appendChild(lock);
-                    gridCol++;
-                }
-            }
-        }
-
-        // สร้างผังโซนแนวนอนสำหรับผังรวม
-        function createMapHorizontalZone(container, zoneId, zoneInfo) {
-            const lockData = loadData();
-            const totalCols = zoneInfo.pairsPerRow * 2 + (zoneInfo.pairsPerRow - 1);
-            
-            container.style.gridTemplateColumns = `repeat(${totalCols}, 1fr)`;
-            container.style.gridTemplateRows = `repeat(${zoneInfo.rows}, 1fr)`;
-            
-            for (let row = 1; row <= zoneInfo.rows; row++) {
-                let gridCol = 1;
-                let letterIndex = 0;
-                
-                for (let pair = 1; pair <= zoneInfo.pairsPerRow; pair++) {
-                    const letters = zoneInfo.letters || ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-                    
-                    const lockId1 = `${zoneInfo.prefix}${row}${letters[letterIndex]}`;
-                    
-                    if (!zoneInfo.excludeLocks || !zoneInfo.excludeLocks.includes(lockId1)) {
-                        const lock1 = document.createElement('div');
-                        lock1.className = 'map-lock';
-                        lock1.dataset.id = lockId1;
-                        
-                        if (lockData[lockId1]) {
-                            lock1.classList.add('booked');
-                        } else {
-                            lock1.classList.add('available');
-                            lock1.dataset.zone = zoneId.replace('zone-', '');
-                        }
-                        
-                        lock1.style.gridColumn = gridCol++;
-                        lock1.style.gridRow = row;
-                        
-                        const lockIdElement1 = document.createElement('div');
-                        lockIdElement1.className = 'map-lock-id';
-                        lockIdElement1.textContent = lockId1;
-                        lock1.appendChild(lockIdElement1);
-                        
-                        if (lockData[lockId1]) {
-                            const lockNameElement1 = document.createElement('div');
-                            lockNameElement1.className = 'map-lock-name';
-                            lockNameElement1.textContent = lockData[lockId1].name;
-                            lock1.appendChild(lockNameElement1);
-                        }
-                        
-                        container.appendChild(lock1);
-                    } else {
-                        gridCol++;
-                    }
-                    letterIndex++;
-                    
-                    const lockId2 = `${zoneInfo.prefix}${row}${letters[letterIndex]}`;
-                    
-                    if (!zoneInfo.excludeLocks || !zoneInfo.excludeLocks.includes(lockId2)) {
-                        const lock2 = document.createElement('div');
-                        lock2.className = 'map-lock';
-                        lock2.dataset.id = lockId2;
-                        
-                        if (lockData[lockId2]) {
-                            lock2.classList.add('booked');
-                        } else {
-                            lock2.classList.add('available');
-                            lock2.dataset.zone = zoneId.replace('zone-', '');
-                        }
-                        
-                        lock2.style.gridColumn = gridCol++;
-                        lock2.style.gridRow = row;
-                        
-                        const lockIdElement2 = document.createElement('div');
-                        lockIdElement2.className = 'map-lock-id';
-                        lockIdElement2.textContent = lockId2;
-                        lock2.appendChild(lockIdElement2);
-                        
-                        if (lockData[lockId2]) {
-                            const lockNameElement2 = document.createElement('div');
-                            lockNameElement2.className = 'map-lock-name';
-                            lockNameElement2.textContent = lockData[lockId2].name;
-                            lock2.appendChild(lockNameElement2);
-                        }
-                        
-                        container.appendChild(lock2);
-                    } else {
-                        gridCol++;
-                    }
-                    letterIndex++;
-                    
-                    if (pair < zoneInfo.pairsPerRow) {
-                        const walkway = document.createElement('div');
-                        walkway.className = 'walkway';
-                        walkway.style.gridColumn = gridCol++;
-                        walkway.style.gridRow = row;
-                        walkway.textContent = 'ทางเดิน';
-                        container.appendChild(walkway);
-                    }
-                }
-            }
-        }
-
-        // ปุ่มพิมพ์ผัง
-        document.getElementById('print-map-btn').addEventListener('click', function() {
-            window.print();
-        });
-
-        // ปิด Modal ผังรวม
-        document.getElementById('close-map').addEventListener('click', function() {
-            hideModal('map-modal');
-        });
-
-        // ฟังก์ชันสำหรับแสดงและซ่อน Modal
-        function showModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
+        // ระบบจัดการราคา
+        // เปิด Modal จัดการราคา
+        document.getElementById('manage-prices').addEventListener('click', function() {
+            loadPriceSettings();
+            document.getElementById('price-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-            document.body.style.height = '100%';
+        });
+
+        // โหลดการตั้งค่าราคาจาก LocalStorage
+        function loadPriceSettings() {
+            const savedPrices = localStorage.getItem('marketPrices');
+            if (savedPrices) {
+                const priceData = JSON.parse(savedPrices);
+                
+                for (const zone in priceData) {
+                    // ตั้งค่าราคาพื้นฐาน
+                    const basePriceInput = document.querySelector(`.base-price[data-zone="${zone}"]`);
+                    if (basePriceInput) {
+                        basePriceInput.value = priceData[zone].basePrice;
+                    }
+                    
+                    // ล้างรายการราคาเฉพาะเดิม
+                    const customPricesContainer = document.getElementById(`custom-prices-${zone}`);
+                    if (customPricesContainer) {
+                        customPricesContainer.innerHTML = '';
+                    }
+                    
+                    // เพิ่มรายการราคาเฉพาะ
+                    if (priceData[zone].priceMap) {
+                        for (const lockId in priceData[zone].priceMap) {
+                            addCustomPriceInput(zone, lockId, priceData[zone].priceMap[lockId]);
+                        }
+                    }
+                }
+            } else {
+                // ถ้าไม่มีข้อมูลใน LocalStorage ให้ใช้ค่าเริ่มต้นจาก zones
+                for (const zoneId in zones) {
+                    const zone = zoneId.replace('zone-', '');
+                    const basePriceInput = document.querySelector(`.base-price[data-zone="${zone}"]`);
+                    if (basePriceInput) {
+                        basePriceInput.value = zones[zoneId].basePrice;
+                    }
+                    
+                    const customPricesContainer = document.getElementById(`custom-prices-${zone}`);
+                    if (customPricesContainer) {
+                        customPricesContainer.innerHTML = '';
+                    }
+                    
+                    if (zones[zoneId].priceMap) {
+                        for (const lockId in zones[zoneId].priceMap) {
+                            addCustomPriceInput(zone, lockId, zones[zoneId].priceMap[lockId]);
+                        }
+                    }
+                }
+            }
         }
 
-        function hideModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            document.body.style.position = 'static';
-            document.body.style.height = 'auto';
-        }
-
-        // ตั้งค่า Event Listeners สำหรับ iPad
-        function setupIpadEvents() {
-            const locks = document.querySelectorAll('.lock:not(.walkway)');
+        // เพิ่ม input สำหรับราคาเฉพาะล็อค
+        function addCustomPriceInput(zone, lockId = '', price = '') {
+            const container = document.getElementById(`custom-prices-${zone}`);
+            if (!container) return;
             
-            locks.forEach(lock => {
-                lock.addEventListener('touchstart', function(e) {
-                    this.style.transform = 'scale(0.95)';
-                    if (e.cancelable) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
+            const div = document.createElement('div');
+            div.className = 'custom-price-item';
+            div.innerHTML = `
+                <input type="text" class="lock-id-input" placeholder="รหัสล็อค" value="${lockId}">
+                <input type="number" class="lock-price-input" placeholder="ราคา" value="${price}" min="0">
+                <button class="remove-custom-price">ลบ</button>
+            `;
+            container.appendChild(div);
+            
+            div.querySelector('.remove-custom-price').addEventListener('click', function() {
+                div.remove();
+            });
+        }
+
+        // เพิ่มราคาเฉพาะล็อคใหม่
+        document.querySelectorAll('.add-custom-price').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const zone = this.dataset.zone;
+                addCustomPriceInput(zone);
+            });
+        });
+
+        // สลับแท็บโซน
+        document.querySelectorAll('.price-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.price-zone-content').forEach(c => c.classList.remove('active'));
                 
-                lock.addEventListener('touchend', function(e) {
-                    this.style.transform = '';
-                    handleLockClick(e);
-                    if (e.cancelable) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
+                this.classList.add('active');
+                document.getElementById(`price-zone-${this.dataset.zone}`).classList.add('active');
+            });
+        });
+
+        // บันทึกการตั้งค่าราคา
+        document.getElementById('save-prices').addEventListener('click', function() {
+            const priceData = {};
+            
+            // เก็บข้อมูลราคาของแต่ละโซน
+            document.querySelectorAll('.price-zone-content').forEach(zoneContent => {
+                const zone = zoneContent.id.replace('price-zone-', '');
+                const basePriceInput = document.querySelector(`.base-price[data-zone="${zone}"]`);
                 
-                lock.addEventListener('click', handleLockClick);
+                if (basePriceInput) {
+                    priceData[zone] = {
+                        basePrice: parseInt(basePriceInput.value) || 0,
+                        priceMap: {}
+                    };
+                    
+                    // เก็บข้อมูลราคาเฉพาะล็อค
+                    zoneContent.querySelectorAll('.custom-price-item').forEach(item => {
+                        const lockId = item.querySelector('.lock-id-input').value.trim();
+                        const price = item.querySelector('.lock-price-input').value.trim();
+                        
+                        if (lockId && price) {
+                            priceData[zone].priceMap[lockId] = parseInt(price) || 0;
+                        }
+                    });
+                }
             });
             
-            document.addEventListener('touchmove', function(e) {
-                if (e.target.closest('.lock') && e.cancelable) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-        }
+            // บันทึกลง LocalStorage
+            localStorage.setItem('marketPrices', JSON.stringify(priceData));
+            
+            // ปิด Modal
+            document.getElementById('price-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // โหลดล็อคใหม่เพื่อแสดงราคาที่อัปเดต
+            createAllLocks();
+            
+            alert('บันทึกการตั้งค่าราคาเรียบร้อยแล้ว');
+        });
+
+        // ยกเลิก Modal
+        document.getElementById('cancel-price').addEventListener('click', function() {
+            document.getElementById('price-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
 
         // ตรวจจับการเลื่อน
         function handleTouchStart() {
@@ -1461,15 +1411,13 @@
             isScrolling = true;
         }
 
-        // เรียกใช้เมื่อ DOM โหลดเสร็จ
-        window.addEventListener('DOMContentLoaded', function() {
-            createAllLocks();
-            setupIpadEvents();
-            
-            // ตรวจจับการเลื่อน
-            document.addEventListener('touchstart', handleTouchStart, { passive: true });
-            document.addEventListener('touchmove', handleTouchMove, { passive: true });
-        });
+        document.addEventListener('touchstart', handleTouchStart, { passive: true });
+        document.addEventListener('touchmove', handleTouchMove, { passive: true });
+        document.addEventListener('touchend', handleLockClick);
+        document.addEventListener('click', handleLockClick);
+
+        // สร้างล็อคเมื่อหน้าเว็บโหลด
+        window.addEventListener('DOMContentLoaded', createAllLocks);
     </script>
 </body>
 </html>
